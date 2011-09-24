@@ -1,0 +1,70 @@
+1. 
+Pseudo Code:
+P(m, n) stands for # of paths for a region of size m by n
+
+P(m, n) = P(m, n-1) + P(m-1, n)
+P(m, 1) = 1
+P(1, n) = 1
+(Similar to the binomial coefficient problem)
+
+Dynamic programming can improve its theta notation.
+theta(mn)
+
+int path(int m, int n)
+{
+	int path[m][n];   //array index starts from 1
+	int i=1, j=1;
+	for(; i<=m; i++)
+		for(; j<=n; j++)
+			path[i][j]=-1;
+		
+	for(i=1; i<=m; i++)
+		path[i][1]=1;
+	for(i=1; i<=n; i++)
+		path[1][i]=1;
+
+	return path_memo(path, m, n);
+}
+
+int path_memo(int path[][], int m, int n)
+{
+	if(path[m][n]==-1)
+		path(m, n) = path(m, n-1) + path(m-1, n);
+	
+	return path[m][n];
+}
+
+See the program in ‘p1.py’ with input file ‘p1_input’
+
+
+2.
+Not proper for divide and conquer
+Because there is only one destination, it’s hard to consider how to divide it.
+
+3.
+Can list all the possibilities and find the opt one. (6! combinations.)
+Not proper for divide and conquer
+
+4.
+Not proper for divide and conquer
+Hard to consider how to divide. Especially the nodes need to be checked the validation which is hard to do separately.
+
+5.
+Solvable by an equation. Not proper for divid and conquer
+
+6.
+Not proper for divid and conquer. Hard to get the area decrease when do it separately.
+
+7.
+Dynamic programming won’t improve the theta notation much.
+theta(n)
+See p7.py with input file ‘p7_input’
+
+8.
+Not proper for divide and conquer. EVERY character of the two strings should be compared .
+
+9.
+Not proper for divide and conquer. The sequence should be considered as a whole.
+
+10.
+Not proper for divide and conquer. It’s similar to minimum spanning tree problem
